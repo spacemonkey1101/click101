@@ -13,6 +13,7 @@ PRIORITIES = {
 
 @click.command()
 @click.argument("priority", type=click.Choice(PRIORITIES.keys()),default="low")   
+@click.argument("todofile", type=click.Path(exists=False))
 def add_todo(name, description, priority, todofile):
     
     
