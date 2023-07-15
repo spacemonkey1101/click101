@@ -14,6 +14,8 @@ PRIORITIES = {
 @click.command()
 @click.argument("priority", type=click.Choice(PRIORITIES.keys()),default="low")   
 @click.argument("todofile", type=click.Path(exists=False))
+@click.option("-n", "--name", prompt="Enter the task name", help="Name of the new task")
+@click.option("-d","--desc", prompt="Enter the task description", help="Description of the new task")
 def add_todo(name, description, priority, todofile):
     
     
