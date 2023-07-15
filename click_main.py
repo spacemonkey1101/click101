@@ -1,11 +1,20 @@
 import click
 
-#annotation followed by function
-
 @click.command()
 @click.option("--name", prompt="Enter your name", help="this would be a username")
 def hello(name):
     click.echo(f"Hello {name}!!")
+
+PRIORITIES = {
+    'high' : "crucial",
+    'medium' : "within 1 day",
+    'low' : "within a week"
+}
+
+@click.command()
+@click.argument("priority", type=click.Choice(PRIORITIES.keys()),default="low")   
+def add_todo(name, description, priority, todofile):
+    
     
 if __name__ == "__main__":
     hello()    
