@@ -30,7 +30,7 @@ def add_todo(name, description, priority, todofile):
     # if filename provided just take it, else ignore it
     filename = todofile if todofile is not None else "mytodos.txt"
     with open(filename, "a+") as f:
-        f.write(f"{name} : {description} [Prioirity : {PRIORITIES[priority]}]")
+        f.write(f"{name} : {description} [Prioirity : {PRIORITIES[priority]}]\n")
 
 
 @click.command()
