@@ -17,7 +17,11 @@ PRIORITIES = {
 @click.option("-n", "--name", prompt="Enter the task name", help="Name of the new task")
 @click.option("-d","--desc", prompt="Enter the task description", help="Description of the new task")
 def add_todo(name, description, priority, todofile):
+    #if filename provided just take it, else ignore it
+    filename = todofile if todofile is not None else "mytodos.txt"
+    with open(filename, "a+") as f:
+        f.write(f"{name} : {description} [Prioirity : {PRIORITIES[priority]}]") 
     
-    
+  
 if __name__ == "__main__":
     hello()    
