@@ -22,6 +22,19 @@ def add_todo(name, description, priority, todofile):
     with open(filename, "a+") as f:
         f.write(f"{name} : {description} [Prioirity : {PRIORITIES[priority]}]") 
     
-  
+@click.command() 
+@click.argument("index", type=int, required=1) # required is set to True
+@click.argument("todofile", type=click.Path(exists=False))
+def delete_todo(index,todofile):
+    filename = todofile if todofile is not None else "mytodos.txt"
+    #read the text and modify it
+    with open(filename,"r") as f:
+        todo_list = f.read().splitlines()
+        todo_list.pop(index)
+    #paste the modified text
+    with open(filename,"w") as f:
+        f.write("\n".join(todo_list))
+        f.write("\n")
+        
 if __name__ == "__main__":
     hello()    
