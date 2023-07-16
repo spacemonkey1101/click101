@@ -35,6 +35,20 @@ def delete_todo(index,todofile):
     with open(filename,"w") as f:
         f.write("\n".join(todo_list))
         f.write("\n")
-        
+@click.command()
+@click.option("-p","--priority",type=click.Choice(PRIORITIES.keys()))
+@click.argument("todofile", type=click.Path(exists=True))
+def list_todo(priority,todofile):
+    filename = todofile if todofile is not None else "mytodos.txt"
+    with open(filename, "r") as f:
+        todo_list = f.read().splitlines()
+    if priority is None:
+        for index, todo_item in enumerate(todo_list):
+            print(f"{index} : {todo_item}")
+    else:
+        for index, todo_item in enumerate(todo_list):
+            if f"[Prioirity : {PRIORITIES[priority]}]" in todo_item:
+                print(f"{index} : {todo_item}")
+
 if __name__ == "__main__":
     hello()    
