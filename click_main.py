@@ -18,11 +18,11 @@ PRIORITIES = {"high": "crucial", "medium": "within 1 day", "low": "within a week
 
 @click.command()
 @click.argument("priority", type=click.Choice(PRIORITIES.keys()), default="low")
-@click.argument("todofile", type=click.Path(exists=False),required=0)
+@click.argument("todofile", type=click.Path(exists=False), required=0)
 @click.option("-n", "--name", prompt="Enter the task name", help="Name of the new task")
 @click.option(
     "-d",
-    "--desc",
+    "--description",
     prompt="Enter the task description",
     help="Description of the new task",
 )
