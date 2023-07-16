@@ -1,1 +1,1 @@
-new todo : blah [Prioirity : within a week]new task2 : blah [Prioirity : within a week]
+task1 : blah1 [Prioirity : crucial]
